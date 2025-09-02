@@ -50,9 +50,9 @@ const Portfolio = () => {
       title: "ConnectNalco",
       description: "Internal web portal for NALCO improving plant task management and employee collaboration",
       tech: ["React", "Node.js", "MongoDB", "JWT"],
-      image: "/placeholder.svg",
-      github: "https://github.com/Remanth05",
-      demo: "#"
+      image: "https://postimg.cc/hXRzN870",
+      github: "https://github.com/Remanth05/connectNalco.git",
+      demo: "https://connectnalco.netlify.app/"
     },
     {
       title: "StreetVendorConnect",
@@ -508,13 +508,17 @@ const Portfolio = () => {
                   
                   {/* Overlay with links */}
                   <div className="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
-                    <Button size="sm" variant="outline" className="backdrop-blur-md">
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
+                    <Button asChild size="sm" variant="outline" className="backdrop-blur-md">
+                      <a href={project.github} target="_blank" rel="noreferrer">
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </a>
                     </Button>
-                    <Button size="sm" className="backdrop-blur-md">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live
+                    <Button asChild size="sm" className="backdrop-blur-md">
+                      <a href={project.demo} target="_blank" rel="noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live
+                      </a>
                     </Button>
                   </div>
                   
@@ -548,13 +552,17 @@ const Portfolio = () => {
                   
                   {/* Action Buttons */}
                   <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                    <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary">
-                      <Github className="w-4 h-4 mr-2" />
-                      Source
+                    <Button asChild variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary">
+                      <a href={project.github} target="_blank" rel="noreferrer">
+                        <Github className="w-4 h-4 mr-2" />
+                        Source
+                      </a>
                     </Button>
-                    <Button variant="ghost" size="sm" className="hover:bg-accent/10 hover:text-accent">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Preview
+                    <Button asChild variant="ghost" size="sm" className="hover:bg-accent/10 hover:text-accent">
+                      <a href={project.demo} target="_blank" rel="noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Preview
+                      </a>
                     </Button>
                   </div>
                 </CardContent>
