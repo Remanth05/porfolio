@@ -151,9 +151,21 @@ const Portfolio = () => {
   const skills = [
     { name: "React.js", level: 90 },
     { name: "Node.js", level: 85 },
+    { name: "Express.js", level: 85 },
     { name: "MongoDB", level: 80 },
     { name: "JavaScript", level: 95 },
-    { name: "Python", level: 75 },
+    { name: "Java", level: 85 },
+    { name: "Python", level: 80 },
+    { name: "Data Structures & Algorithms", level: 85 },
+    { name: "Problem Solving", level: 90 },
+    { name: "Database & SQL", level: 80 },
+    { name: "AWS", level: 60 },
+    { name: "Operating Systems", level: 70 },
+    { name: "DBMS", level: 75 },
+    { name: "Computer Networks", level: 70 },
+    { name: "Communication", level: 85 },
+    { name: "Teamwork", level: 85 },
+    { name: "Adaptability", level: 80 },
     { name: "UI/UX Design", level: 80 }
   ];
 
@@ -539,8 +551,8 @@ const Portfolio = () => {
               {/* Skills Progress */}
               <div className="space-y-6">
                 <h3 className="text-xl font-semibold mb-4">Technical Skills</h3>
-                <div className="grid gap-4">
-                  {skills.slice(0, 4).map((skill, index) => (
+                <div className="grid gap-4 md:grid-cols-2">
+                  {skills.map((skill, index) => (
                     <div key={index} className="group">
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-medium group-hover:text-primary transition-colors">{skill.name}</span>
