@@ -4,6 +4,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import emailjs from "@emailjs/browser";
+import { useToast } from "@/hooks/use-toast";
 import { 
   Code, 
   Palette, 
@@ -25,22 +27,47 @@ import {
 import { useState } from "react";
 const profileImage = "https://i.postimg.cc/VvtCnY08/personalpic.jpg";
 
+const EMAILJS_PUBLIC_KEY = "01hIdeLaJOG3c3Vo4";
+const EMAILJS_SERVICE_ID = "service_d0c2exi";
+const EMAILJS_TEMPLATE_ID = "template_eu2yaxm";
+
 const ContactForm = () => {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [sending, setSending] = useState(false);
+  const { toast } = useToast();
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
   };
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const to = "remanthkumar05@gmail.com";
-    const su = encodeURIComponent(form.subject || `New inquiry from ${form.name}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${body}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+    try {
+      setSending(true);
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+          reply_to: form.email,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+      toast({ title: "Message sent", description: "Thanks! I’ll reply soon." });
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      toast({ title: "Failed to send", description: "Please try again later.", variant: "destructive" as any });
+    } finally {
+      setSending(false);
+    }
   };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -62,7 +89,9 @@ const ContactForm = () => {
         <Textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="Write your message..." required className="min-h-[140px]" />
       </div>
       <div className="flex justify-end">
-        <Button type="submit" className="bg-gradient-to-r from-primary to-accent">Send Message</Button>
+        <Button type="submit" disabled={sending} className="bg-gradient-to-r from-primary to-accent">
+          {sending ? "Sending..." : "Send Message"}
+        </Button>
       </div>
     </form>
   );
