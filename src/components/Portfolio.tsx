@@ -494,15 +494,6 @@ const Portfolio = () => {
                     />
                     
                     {/* Floating Achievement Cards */}
-                    <div className="absolute -top-6 -right-6">
-                      <Card className="bg-gradient-card backdrop-blur-md border-accent/30 p-3 animate-float">
-                        <CardContent className="p-0 flex items-center gap-2">
-                          <Award className="w-5 h-5 text-accent" />
-                          <span className="text-sm font-medium">94.6%</span>
-                        </CardContent>
-                      </Card>
-                    </div>
-                    
                     <div className="absolute -bottom-4 -left-6">
                       <Card className="bg-gradient-card backdrop-blur-md border-primary/30 p-3 animate-float delay-500">
                         <CardContent className="p-0 flex items-center gap-2">
