@@ -267,7 +267,7 @@ const Portfolio = () => {
                     </a>
                   </Button>
                   <Button asChild variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
-                    <a href="https://mail.google.com/mail/?view=cm&to=kunak.ug23.cs@nitp.ac.in" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                    <a href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
                       <Mail className="h-5 w-5" />
                     </a>
                   </Button>
@@ -669,11 +669,11 @@ const Portfolio = () => {
                   <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">Email Address</h3>
                   <p className="text-muted-foreground mb-4">Drop me a line anytime</p>
                   <a
-                    href="https://mail.google.com/mail/?view=cm&to=kunak.ug23.cs@nitp.ac.in"
+                    href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com"
                     target="_blank" rel="noopener noreferrer"
                     className="text-primary hover:text-accent transition-colors font-medium"
                   >
-                    kunak.ug23.cs@nitp.ac.in
+                    remanthkumar05@gmail.com
                   </a>
                 </CardContent>
               </Card>
@@ -739,7 +739,7 @@ const Portfolio = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
-                    <a href="https://mail.google.com/mail/?view=cm&to=kunak.ug23.cs@nitp.ac.in" target="_blank" rel="noopener noreferrer">
+                    <a href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com" target="_blank" rel="noopener noreferrer">
                       <Mail className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                       Start Conversation
                     </a>
@@ -797,7 +797,7 @@ const Portfolio = () => {
                   </svg>
                 </a>
                 <a
-                  href="https://mail.google.com/mail/?view=cm&to=kunak.ug23.cs@nitp.ac.in"
+                  href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com"
                   target="_blank" rel="noopener noreferrer"
                   className="w-12 h-12 bg-gradient-card backdrop-blur-md border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent/30 transition-all duration-300 hover:scale-110"
                 >
@@ -826,7 +826,7 @@ const Portfolio = () => {
                   <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
                     <Mail className="w-4 h-4 text-primary" />
                   </div>
-                  <a href="https://mail.google.com/mail/?view=cm&to=kunak.ug23.cs@nitp.ac.in" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent">kunak.ug23.cs@nitp.ac.in</a>
+                  <a href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent">remanthkumar05@gmail.com</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center">
