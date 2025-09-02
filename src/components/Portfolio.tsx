@@ -1,4 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -19,7 +23,51 @@ import {
   Calendar,
   Award
 } from "lucide-react";
+import { useState } from "react";
 const profileImage = "https://i.postimg.cc/VvtCnY08/personalpic.jpg";
+
+const ContactForm = () => {
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+  };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const to = "remanthkumar05@gmail.com";
+    const su = encodeURIComponent(form.subject || `New inquiry from ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${body}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" name="name" value={form.name} onChange={handleChange} placeholder="Your name" required />
+        </div>
+        <div>
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div>
+        <Label htmlFor="subject">Subject</Label>
+        <Input id="subject" name="subject" value={form.subject} onChange={handleChange} placeholder="How can I help?" required />
+      </div>
+      <div>
+        <Label htmlFor="message">Message</Label>
+        <Textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="Write your message..." required className="min-h-[140px]" />
+      </div>
+      <div className="flex justify-end">
+        <Button type="submit" className="bg-gradient-to-r from-primary to-accent">Send Message</Button>
+      </div>
+    </form>
+  );
+};
 
 const Portfolio = () => {
   const services = [
@@ -660,6 +708,25 @@ const Portfolio = () => {
               </Card>
             </div>
 
+            {/* Contact Form */}
+            <div className="grid lg:grid-cols-2 gap-8 mb-16">
+              <Card className="bg-gradient-card backdrop-blur-md border-border/50">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+                  <ContactForm />
+                </CardContent>
+              </Card>
+              <div className="bg-gradient-card backdrop-blur-md rounded-3xl p-8 border border-border/50">
+                <h4 className="text-xl font-semibold mb-4">Prefer email?</h4>
+                <p className="text-muted-foreground mb-4">You can also reach me directly at</p>
+                <a href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com" target="_blank" rel="noopener noreferrer" className="text-primary font-medium">remanthkumar05@gmail.com</a>
+                <div className="mt-6">
+                  <div className="flex items-center gap-3 mb-3"><Phone className="w-5 h-5 text-accent" /><span className="text-foreground">+91 8885473487</span></div>
+                  <div className="flex items-center gap-3"><MapPin className="w-5 h-5 text-primary" /><span className="text-foreground">Patna, Bihar, India</span></div>
+                </div>
+              </div>
+            </div>
+
             {/* CTA Section */}
             <div className="text-center bg-gradient-card backdrop-blur-md rounded-3xl p-12 border border-border/50 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-50"></div>
@@ -786,9 +853,8 @@ const Portfolio = () => {
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-muted-foreground text-sm">Built with</span>
-                <span className="text-primary">❤️</span>
-                <span className="text-muted-foreground text-sm">using React & Tailwind CSS</span>
+                <span className="text-muted-foreground text-sm">Developed by</span>
+                <span className="font-semibold text-foreground">Remanth</span>
               </div>
             </div>
           </div>
