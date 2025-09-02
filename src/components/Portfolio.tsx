@@ -116,8 +116,8 @@ const Portfolio = () => {
     },
     {
       icon: <Brain className="w-8 h-8 text-primary" />,
-      title: "Problem Solving",
-      description: "Analyzing complex problems and implementing efficient algorithmic solutions"
+      title: "DSA Enthusiast",
+      description: "Strong foundation in Data Structures & Algorithms; writing optimized, scalable solutions and improving time/space complexity"
     }
   ];
 
@@ -142,7 +142,7 @@ const Portfolio = () => {
       title: "AI Resume Builder",
       description: "AI-powered tool with Clerk authentication and Gemini AI integration",
       tech: ["React", "Clerk", "Gemini AI", "Node.js"],
-      image: "/placeholder.svg",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2F47d5a9427a98458cba491ebd13e8e5fa?format=webp&width=1200",
       github: "https://github.com/Remanth05/AI-Resume-Builder.git",
       demo: "https://ai-resumebuilder-geminiai.netlify.app/"
     }
@@ -232,7 +232,7 @@ const Portfolio = () => {
                     UI/UX Enthusiast
                   </Badge>
                   <Badge className="bg-primary/20 text-primary border-primary/30 px-4 py-2 text-sm">
-                    Problem Solver
+                    DSA Enthusiast
                   </Badge>
                 </div>
                 <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
