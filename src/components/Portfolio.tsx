@@ -296,24 +296,50 @@ const Portfolio = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-card/30">
-        <div className="container mx-auto px-6">
+      <section id="services" className="py-20 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 border-primary text-primary">Services</Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">What I Do</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Providing comprehensive development solutions from concept to deployment
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-card backdrop-blur-md border border-primary/20 mb-6">
+              <Star className="w-4 h-4 text-primary mr-2" />
+              <span className="text-primary font-medium">Services</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+              Expertise Services
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Let's check it out what I can do for you and your business
             </p>
           </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <Card key={index} className="bg-gradient-card backdrop-blur-md border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow group">
-                <CardContent className="p-8 text-center">
-                  <div className="mb-6 group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
+              <Card key={index} className="group bg-gradient-card backdrop-blur-md border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 relative overflow-hidden">
+                {/* Hover Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <CardContent className="p-8 text-center relative z-10">
+                  <div className="mb-6 relative">
+                    <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 group-hover:rotate-3">
+                      {service.icon}
+                    </div>
+                    {/* Floating dot */}
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-bounce">
+                      <div className="w-2 h-2 bg-background rounded-full"></div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                  <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
+                    {service.description}
+                  </p>
+                  
+                  {/* Bottom accent */}
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 </CardContent>
               </Card>
             ))}
@@ -322,67 +348,125 @@ const Portfolio = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="w-96 h-96 mx-auto relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-20"></div>
-                <img
-                  src={profileImage}
-                  alt="Kuna Remanth Kumar"
-                  className="relative w-full h-full object-cover rounded-full border-4 border-primary/30 shadow-card"
-                />
-              </div>
-            </div>
-            <div>
-              <Badge variant="outline" className="mb-4 border-accent text-accent">About Me</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Creating Solutions, Not Just Visuals</h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                My name is Kuna Remanth Kumar, and I am currently pursuing B.Tech in Computer Science and Engineering 
-                at the National Institute of Technology, Patna. I completed my schooling at Delhi Public School, Visakhapatnam.
-              </p>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                I have a strong interest in backend development with skills in Node.js, Express, MongoDB, and REST APIs, 
-                and hands-on experience with the MERN stack. During my internship at NALCO Damanjodi, I developed 
-                ConnectNalco to manage plant tasks and employee services, reflecting my passion for creating practical, 
-                problem-solving applications.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="flex items-center space-x-3">
-                  <Award className="w-5 h-5 text-primary" />
-                  <span className="text-sm">B.Tech CSE, NIT Patna</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Briefcase className="w-5 h-5 text-primary" />
-                  <span className="text-sm">NALCO Intern 2025</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Star className="w-5 h-5 text-primary" />
-                  <span className="text-sm">94.6% Intermediate</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Calendar className="w-5 h-5 text-primary" />
-                  <span className="text-sm">Available for Projects</span>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {skills.map((skill, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
+      <section id="about" className="py-20 relative">
+        {/* Decorative Elements */}
+        <div className="absolute top-1/4 left-10 opacity-10">
+          <Code className="w-32 h-32 text-primary" />
+        </div>
+        <div className="absolute bottom-1/4 right-10 opacity-10">
+          <Palette className="w-24 h-24 text-accent" />
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="relative lg:order-2">
+              <div className="relative max-w-md mx-auto lg:mx-0">
+                {/* Main Image */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl transform rotate-6 group-hover:rotate-3 transition-transform duration-500"></div>
+                  <div className="relative bg-gradient-card backdrop-blur-md rounded-3xl p-8 border border-border/50">
+                    <img
+                      src={profileImage}
+                      alt="Kuna Remanth Kumar"
+                      className="w-full h-80 object-cover rounded-2xl"
+                    />
+                    
+                    {/* Floating Achievement Cards */}
+                    <div className="absolute -top-6 -right-6">
+                      <Card className="bg-gradient-card backdrop-blur-md border-accent/30 p-3 animate-float">
+                        <CardContent className="p-0 flex items-center gap-2">
+                          <Award className="w-5 h-5 text-accent" />
+                          <span className="text-sm font-medium">94.6%</span>
+                        </CardContent>
+                      </Card>
                     </div>
-                    <div className="w-full bg-secondary rounded-full h-2">
-                      <div 
-                        className="bg-gradient-to-r from-primary to-accent h-2 rounded-full transition-all duration-500"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
+                    
+                    <div className="absolute -bottom-4 -left-6">
+                      <Card className="bg-gradient-card backdrop-blur-md border-primary/30 p-3 animate-float delay-500">
+                        <CardContent className="p-0 flex items-center gap-2">
+                          <GraduationCap className="w-5 h-5 text-primary" />
+                          <span className="text-sm font-medium">NIT Patna</span>
+                        </CardContent>
+                      </Card>
                     </div>
                   </div>
-                ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div className="lg:order-1">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-card backdrop-blur-md border border-accent/20 mb-6">
+                <User className="w-4 h-4 text-accent mr-2" />
+                <span className="text-accent font-medium">About Me</span>
+              </div>
+              
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+                  Designing Solutions,
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-accent to-foreground bg-clip-text text-transparent">
+                  Not Just Visuals
+                </span>
+              </h2>
+              
+              <div className="space-y-6 mb-8">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  My name is <span className="text-primary font-semibold">Kuna Remanth Kumar</span>, and I am currently pursuing B.Tech in Computer Science and Engineering at the National Institute of Technology, Patna.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  I have a strong interest in backend development with skills in Node.js, Express, MongoDB, and REST APIs. During my internship at <span className="text-accent font-semibold">NALCO Damanjodi</span>, I developed ConnectNalco, reflecting my passion for creating practical, problem-solving applications.
+                </p>
+              </div>
+
+              {/* Achievement Grid */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                <Card className="bg-gradient-card backdrop-blur-md border-border/50 p-4 hover:scale-105 transition-transform duration-300">
+                  <CardContent className="p-0 flex items-center gap-3">
+                    <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+                      <Briefcase className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold">NALCO Intern</div>
+                      <div className="text-sm text-muted-foreground">Summer 2025</div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-gradient-card backdrop-blur-md border-border/50 p-4 hover:scale-105 transition-transform duration-300">
+                  <CardContent className="p-0 flex items-center gap-3">
+                    <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
+                      <Calendar className="w-6 h-6 text-accent" />
+                    </div>
+                    <div>
+                      <div className="font-semibold">Available</div>
+                      <div className="text-sm text-muted-foreground">For Projects</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Skills Progress */}
+              <div className="space-y-6">
+                <h3 className="text-xl font-semibold mb-4">Technical Skills</h3>
+                <div className="grid gap-4">
+                  {skills.slice(0, 4).map((skill, index) => (
+                    <div key={index} className="group">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-medium group-hover:text-primary transition-colors">{skill.name}</span>
+                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                      </div>
+                      <div className="w-full bg-secondary/50 rounded-full h-3 overflow-hidden">
+                        <div 
+                          className="h-3 rounded-full bg-gradient-to-r from-primary via-accent to-primary bg-size-200 animate-gradient transition-all duration-1000 group-hover:shadow-glow"
+                          style={{ width: `${skill.level}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -390,44 +474,87 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-card/30">
-        <div className="container mx-auto px-6">
+      <section id="projects" className="py-20 bg-gradient-to-br from-background via-card/20 to-background relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_hsl(var(--primary))_1px,_transparent_1px)] bg-[size:50px_50px]"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 border-primary text-primary">Portfolio</Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Featured Projects</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Showcasing recent work and technical achievements
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-card backdrop-blur-md border border-primary/20 mb-6">
+              <Briefcase className="w-4 h-4 text-primary mr-2" />
+              <span className="text-primary font-medium">Portfolio</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent">
+              Digital Product Showcases
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Showcasing recent work and technical achievements that solve real-world problems
             </p>
           </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="bg-gradient-card backdrop-blur-md border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow group overflow-hidden">
-                <div className="relative">
+              <Card key={index} className="group bg-gradient-card backdrop-blur-md border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-glow hover:-translate-y-4 relative overflow-hidden">
+                {/* Project Image */}
+                <div className="relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20"></div>
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Overlay with links */}
+                  <div className="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
+                    <Button size="sm" variant="outline" className="backdrop-blur-md">
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </Button>
+                    <Button size="sm" className="backdrop-blur-md">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Live
+                    </Button>
+                  </div>
+                  
+                  {/* Project Number */}
+                  <div className="absolute top-4 left-4 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm">
+                    {index + 1}
+                  </div>
                 </div>
+
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                    <span className="text-sm text-accent font-medium">Featured Project</span>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
+                  
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="secondary" className="text-xs">
+                      <Badge key={techIndex} variant="secondary" className="text-xs hover:bg-primary/20 hover:text-primary transition-colors duration-300">
                         {tech}
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex items-center gap-4">
-                    <Button variant="outline" size="sm" className="flex-1">
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
+                  
+                  {/* Action Buttons */}
+                  <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                    <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary">
+                      <Github className="w-4 h-4 mr-2" />
+                      Source
                     </Button>
-                    <Button size="sm" className="flex-1">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Demo
+                    <Button variant="ghost" size="sm" className="hover:bg-accent/10 hover:text-accent">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Preview
                     </Button>
                   </div>
                 </CardContent>
@@ -438,67 +565,201 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20">
-        <div className="container mx-auto px-6">
+      <section id="contact" className="py-20 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/3 to-accent/3 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 border-accent text-accent">Contact</Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Let's Work Together</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ready to bring your ideas to life? Let's discuss your next project
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-card backdrop-blur-md border border-accent/20 mb-6">
+              <Mail className="w-4 h-4 text-accent mr-2" />
+              <span className="text-accent font-medium">Get In Touch</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent">
+              Got A Project? Let's Talk
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              I'm always interested in hearing about new opportunities and exciting projects. Let's create something amazing together!
             </p>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="bg-gradient-card backdrop-blur-md border-border/50 text-center">
-                <CardContent className="p-8">
-                  <Mail className="w-8 h-8 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Email</h3>
-                  <p className="text-muted-foreground">kunak.ug23.cs@nitp.ac.in</p>
+          
+          <div className="max-w-6xl mx-auto">
+            {/* Contact Cards */}
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
+              <Card className="group bg-gradient-card backdrop-blur-md border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <Mail className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">Email Address</h3>
+                  <p className="text-muted-foreground mb-4">Drop me a line anytime</p>
+                  <a 
+                    href="mailto:kunak.ug23.cs@nitp.ac.in" 
+                    className="text-primary hover:text-accent transition-colors font-medium"
+                  >
+                    kunak.ug23.cs@nitp.ac.in
+                  </a>
                 </CardContent>
               </Card>
-              <Card className="bg-gradient-card backdrop-blur-md border-border/50 text-center">
-                <CardContent className="p-8">
-                  <Phone className="w-8 h-8 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Phone</h3>
-                  <p className="text-muted-foreground">+91 8885473487</p>
+
+              <Card className="group bg-gradient-card backdrop-blur-md border-border/50 hover:border-accent/30 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 mx-auto bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <Phone className="w-8 h-8 text-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-accent transition-colors duration-300">Phone Number</h3>
+                  <p className="text-muted-foreground mb-4">Call me for quick chat</p>
+                  <a 
+                    href="tel:+918885473487" 
+                    className="text-accent hover:text-primary transition-colors font-medium"
+                  >
+                    +91 8885473487
+                  </a>
                 </CardContent>
               </Card>
-              <Card className="bg-gradient-card backdrop-blur-md border-border/50 text-center">
-                <CardContent className="p-8">
-                  <MapPin className="w-8 h-8 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">Location</h3>
-                  <p className="text-muted-foreground">Patna, Bihar, India</p>
+
+              <Card className="group bg-gradient-card backdrop-blur-md border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <MapPin className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">Location</h3>
+                  <p className="text-muted-foreground mb-4">Based in India</p>
+                  <span className="text-primary font-medium">Patna, Bihar, India</span>
                 </CardContent>
               </Card>
             </div>
-            <div className="text-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 shadow-glow">
-                <Mail className="mr-2 h-5 w-5" />
-                Get In Touch
-              </Button>
+
+            {/* CTA Section */}
+            <div className="text-center bg-gradient-card backdrop-blur-md rounded-3xl p-12 border border-border/50 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-50"></div>
+              <div className="relative z-10">
+                <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+                  Ready to Start Your Project?
+                </h3>
+                <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                  I'm available for freelance projects and full-time opportunities. Let's discuss how we can bring your ideas to life.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
+                    <Mail className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                    Start Conversation
+                  </Button>
+                  <Button variant="outline" size="lg" className="border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 backdrop-blur-sm">
+                    <Download className="mr-2 h-5 w-5" />
+                    Download CV
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-12">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="text-center md:text-left mb-4 md:mb-0">
-              <p className="text-muted-foreground">
-                © 2024 Kuna Remanth Kumar. All rights reserved.
-              </p>
+      <footer className="relative border-t border-border/50 py-16 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_hsl(var(--primary))_1px,_transparent_1px)] bg-[size:30px_30px]"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-3 gap-12 mb-12">
+            {/* Brand Section */}
+            <div className="lg:col-span-1">
+              <div className="mb-6">
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
+                  Remanth Kumar
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Full Stack Developer passionate about creating innovative solutions that make a difference. 
+                  Let's build something amazing together.
+                </p>
+              </div>
+              
+              {/* Social Links */}
+              <div className="flex items-center gap-4">
+                <a 
+                  href="https://github.com/Remanth05" 
+                  className="w-12 h-12 bg-gradient-card backdrop-blur-md border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all duration-300 hover:scale-110"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+                <a 
+                  href="https://linkedin.com/in/remanthkumar05" 
+                  className="w-12 h-12 bg-gradient-card backdrop-blur-md border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all duration-300 hover:scale-110"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+                <a 
+                  href="mailto:kunak.ug23.cs@nitp.ac.in" 
+                  className="w-12 h-12 bg-gradient-card backdrop-blur-md border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent/30 transition-all duration-300 hover:scale-110"
+                >
+                  <Mail className="w-5 h-5" />
+                </a>
+              </div>
             </div>
-            <div className="flex items-center space-x-6">
-              <a href="https://github.com/Remanth05" className="text-muted-foreground hover:text-primary transition-colors">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="https://linkedin.com/in/remanthkumar05" className="text-muted-foreground hover:text-primary transition-colors">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
+
+            {/* Quick Links */}
+            <div className="lg:col-span-1">
+              <h4 className="text-lg font-semibold mb-6 text-foreground">Quick Links</h4>
+              <nav className="space-y-3">
+                <a href="#home" className="block text-muted-foreground hover:text-primary transition-colors duration-300">Home</a>
+                <a href="#about" className="block text-muted-foreground hover:text-primary transition-colors duration-300">About</a>
+                <a href="#services" className="block text-muted-foreground hover:text-primary transition-colors duration-300">Services</a>
+                <a href="#projects" className="block text-muted-foreground hover:text-primary transition-colors duration-300">Projects</a>
+                <a href="#contact" className="block text-muted-foreground hover:text-primary transition-colors duration-300">Contact</a>
+              </nav>
+            </div>
+
+            {/* Contact Info */}
+            <div className="lg:col-span-1">
+              <h4 className="text-lg font-semibold mb-6 text-foreground">Get In Touch</h4>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+                    <Mail className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground">kunak.ug23.cs@nitp.ac.in</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center">
+                    <Phone className="w-4 h-4 text-accent" />
+                  </div>
+                  <span className="text-muted-foreground">+91 8885473487</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground">Patna, Bihar, India</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Section */}
+          <div className="pt-8 border-t border-border/50">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="text-center md:text-left">
+                <p className="text-muted-foreground">
+                  © 2024 Kuna Remanth Kumar. All rights reserved.
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-muted-foreground text-sm">Built with</span>
+                <span className="text-primary">❤️</span>
+                <span className="text-muted-foreground text-sm">using React & Tailwind CSS</span>
+              </div>
             </div>
           </div>
         </div>
