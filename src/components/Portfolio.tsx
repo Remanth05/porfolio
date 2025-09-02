@@ -102,42 +102,194 @@ const Portfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20"></div>
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-          <div className="text-center md:text-left">
-            <div className="inline-block px-4 py-2 rounded-full bg-card/20 backdrop-blur-md border border-border mb-6">
-              <span className="text-accent font-medium">👋 Hello, I'm</span>
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl"></div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 opacity-20">
+          <div className="w-3 h-3 bg-primary rounded-full animate-bounce"></div>
+        </div>
+        <div className="absolute top-1/3 right-20 opacity-20">
+          <div className="w-2 h-2 bg-accent rounded-full animate-bounce delay-500"></div>
+        </div>
+        <div className="absolute bottom-1/4 left-1/4 opacity-20">
+          <div className="w-4 h-4 bg-primary/50 rounded-full animate-bounce delay-1000"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="text-center lg:text-left space-y-8">
+              {/* Status Badge */}
+              <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-card backdrop-blur-md border border-primary/20 shadow-glow">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse mr-3"></div>
+                <span className="text-sm font-medium text-foreground">Available for new opportunities</span>
+              </div>
+
+              {/* Main Heading */}
+              <div className="space-y-4">
+                <div className="inline-block">
+                  <span className="text-lg text-accent font-medium">👋 Hello, I'm</span>
+                </div>
+                <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+                  <span className="block bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent animate-fade-in">
+                    Kuna Remanth
+                  </span>
+                  <span className="block bg-gradient-to-r from-accent via-primary to-foreground bg-clip-text text-transparent animate-fade-in delay-300">
+                    Kumar
+                  </span>
+                </h1>
+              </div>
+
+              {/* Role Description */}
+              <div className="space-y-4">
+                <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                  <Badge className="bg-primary/20 text-primary border-primary/30 px-4 py-2 text-sm">
+                    Full Stack Developer
+                  </Badge>
+                  <Badge className="bg-accent/20 text-accent border-accent/30 px-4 py-2 text-sm">
+                    UI/UX Enthusiast
+                  </Badge>
+                  <Badge className="bg-primary/20 text-primary border-primary/30 px-4 py-2 text-sm">
+                    Problem Solver
+                  </Badge>
+                </div>
+                <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                  Building impactful applications that solve real-world problems with modern technologies and innovative design approaches.
+                </p>
+              </div>
+
+              {/* Stats Cards */}
+              <div className="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+                <Card className="bg-gradient-card backdrop-blur-md border-border/50 p-4 text-center hover:scale-105 transition-transform duration-300">
+                  <CardContent className="p-0">
+                    <div className="text-2xl font-bold text-primary">3+</div>
+                    <div className="text-xs text-muted-foreground">Projects</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-gradient-card backdrop-blur-md border-border/50 p-4 text-center hover:scale-105 transition-transform duration-300">
+                  <CardContent className="p-0">
+                    <div className="text-2xl font-bold text-accent">NIT</div>
+                    <div className="text-xs text-muted-foreground">Patna</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-gradient-card backdrop-blur-md border-border/50 p-4 text-center hover:scale-105 transition-transform duration-300">
+                  <CardContent className="p-0">
+                    <div className="text-2xl font-bold text-primary">MERN</div>
+                    <div className="text-xs text-muted-foreground">Stack</div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
+                  <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                  Download Resume
+                </Button>
+                <Button variant="outline" size="lg" className="border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 backdrop-blur-sm">
+                  <ExternalLink className="mr-2 h-5 w-5" />
+                  View Portfolio
+                </Button>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-6 justify-center lg:justify-start">
+                <span className="text-sm text-muted-foreground">Connect with me:</span>
+                <div className="flex gap-3">
+                  <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
+                    <Github className="h-5 w-5" />
+                  </Button>
+                  <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </Button>
+                  <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
+                    <Mail className="h-5 w-5" />
+                  </Button>
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                Kuna Remanth Kumar
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-              Full Stack Developer | UI/UX Enthusiast | Problem Solver
-            </p>
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl">
-              Building impactful applications that solve real-world problems with modern technologies and innovative design.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 shadow-glow">
-                <Download className="mr-2 h-5 w-5" />
-                Download Resume
-              </Button>
-              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10">
-                View Portfolio
-              </Button>
+
+            {/* Right Content */}
+            <div className="relative lg:pl-12">
+              <div className="relative mx-auto lg:mx-0 max-w-md">
+                {/* Main Image Container */}
+                <div className="relative">
+                  {/* Animated Rings */}
+                  <div className="absolute inset-0 animate-spin-slow">
+                    <div className="w-full h-full rounded-full border-2 border-dashed border-primary/30"></div>
+                  </div>
+                  <div className="absolute inset-4 animate-spin-slow reverse">
+                    <div className="w-full h-full rounded-full border-2 border-dotted border-accent/30"></div>
+                  </div>
+                  
+                  {/* Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-accent/20 to-primary/30 rounded-full blur-2xl animate-pulse"></div>
+                  
+                  {/* Profile Image */}
+                  <div className="relative z-10 w-80 h-80 mx-auto">
+                    <img
+                      src={profileImage}
+                      alt="Kuna Remanth Kumar"
+                      className="w-full h-full object-cover rounded-full border-4 border-background shadow-2xl hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                {/* Floating Tech Cards */}
+                <div className="absolute -top-8 -left-8 opacity-90">
+                  <Card className="bg-gradient-card backdrop-blur-md border-primary/30 p-3 hover:scale-110 transition-transform duration-300 animate-float">
+                    <CardContent className="p-0 flex items-center gap-2">
+                      <Code className="w-5 h-5 text-primary" />
+                      <span className="text-sm font-medium">React</span>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="absolute -top-4 -right-12 opacity-90">
+                  <Card className="bg-gradient-card backdrop-blur-md border-accent/30 p-3 hover:scale-110 transition-transform duration-300 animate-float delay-500">
+                    <CardContent className="p-0 flex items-center gap-2">
+                      <Database className="w-5 h-5 text-accent" />
+                      <span className="text-sm font-medium">MongoDB</span>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="absolute -bottom-8 -left-12 opacity-90">
+                  <Card className="bg-gradient-card backdrop-blur-md border-primary/30 p-3 hover:scale-110 transition-transform duration-300 animate-float delay-1000">
+                    <CardContent className="p-0 flex items-center gap-2">
+                      <Palette className="w-5 h-5 text-primary" />
+                      <span className="text-sm font-medium">Design</span>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="absolute -bottom-4 -right-8 opacity-90">
+                  <Card className="bg-gradient-card backdrop-blur-md border-accent/30 p-3 hover:scale-110 transition-transform duration-300 animate-float delay-700">
+                    <CardContent className="p-0 flex items-center gap-2">
+                      <Brain className="w-5 h-5 text-accent" />
+                      <span className="text-sm font-medium">Node.js</span>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="relative">
-            <div className="relative w-80 h-80 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-3xl opacity-30"></div>
-              <img
-                src={profileImage}
-                alt="Kuna Remanth Kumar"
-                className="relative w-full h-full object-cover rounded-full border-4 border-primary/20 shadow-card"
-              />
+
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <div className="flex flex-col items-center gap-2 opacity-60">
+              <span className="text-sm text-muted-foreground">Scroll to explore</span>
+              <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
+                <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2 animate-bounce"></div>
+              </div>
             </div>
           </div>
         </div>
