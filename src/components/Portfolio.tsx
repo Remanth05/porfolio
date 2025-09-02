@@ -270,7 +270,7 @@ const Portfolio = () => {
                     Download Resume
                   </a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 backdrop-blur-sm">
+                <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary focus-visible:ring-primary backdrop-blur-sm">
                   <a href="#projects">
                     <ExternalLink className="mr-2 h-5 w-5" />
                     View Portfolio
@@ -772,7 +772,7 @@ const Portfolio = () => {
                       Start Conversation
                     </a>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 backdrop-blur-sm">
+                  <Button asChild variant="outline" size="lg" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:border-accent focus-visible:ring-accent backdrop-blur-sm">
                     <a href="https://cdn.builder.io/o/assets%2F50440a33a47940b994eb2f799fc8ca22%2F6d7fbc135d924dc6a0c4b9a53319f5e8?alt=media&token=cdee984f-b88a-4404-8f7a-069af2919d52&apiKey=50440a33a47940b994eb2f799fc8ca22" download="Kuna_Remanth_Kumar_CV.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="mr-2 h-5 w-5" />
                       Download CV
