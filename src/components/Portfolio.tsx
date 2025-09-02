@@ -50,7 +50,7 @@ const Portfolio = () => {
       title: "ConnectNalco",
       description: "Internal web portal for NALCO improving plant task management and employee collaboration",
       tech: ["React", "Node.js", "MongoDB", "JWT"],
-      image: "https://postimg.cc/hXRzN870",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2F5c7c7caa97434236a84c71737147c0e5?format=webp&width=1200",
       github: "https://github.com/Remanth05/connectNalco.git",
       demo: "https://connectnalco.netlify.app/"
     },
