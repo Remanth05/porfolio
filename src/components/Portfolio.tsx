@@ -673,10 +673,10 @@ const Portfolio = () => {
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-card backdrop-blur-md border border-accent/20 mb-6">
+            <a href="#contact" className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-card backdrop-blur-md border border-accent/20 mb-6 hover:bg-accent/10 transition-colors">
               <Mail className="w-4 h-4 text-accent mr-2" />
               <span className="text-accent font-medium">Get In Touch</span>
-            </div>
+            </a>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent">
               Got A Project? Let's Talk
             </h2>
