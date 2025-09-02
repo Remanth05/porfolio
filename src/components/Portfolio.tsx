@@ -50,25 +50,25 @@ const Portfolio = () => {
       title: "ConnectNalco",
       description: "Internal web portal for NALCO improving plant task management and employee collaboration",
       tech: ["React", "Node.js", "MongoDB", "JWT"],
-      image: "/placeholder.svg",
-      github: "https://github.com/Remanth05",
-      demo: "#"
+      image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2F5c7c7caa97434236a84c71737147c0e5?format=webp&width=1200",
+      github: "https://github.com/Remanth05/connectNalco.git",
+      demo: "https://connectnalco.netlify.app/"
     },
     {
       title: "StreetVendorConnect",
       description: "Hyperlocal marketplace platform with role-based access and real-time order management",
       tech: ["React", "Express", "MongoDB", "Socket.io"],
-      image: "/placeholder.svg",
-      github: "https://github.com/Remanth05",
-      demo: "#"
+      image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2Fd3bb18a44bca4b14b554d86147339254?format=webp&width=1200",
+      github: "https://github.com/Remanth05/StreetVendorConnect.git",
+      demo: "https://streetvendor-connect.netlify.app/"
     },
     {
       title: "AI Resume Builder",
       description: "AI-powered tool with Clerk authentication and Gemini AI integration",
       tech: ["React", "Clerk", "Gemini AI", "Node.js"],
       image: "/placeholder.svg",
-      github: "https://github.com/Remanth05",
-      demo: "#"
+      github: "https://github.com/Remanth05/AI-Resume-Builder.git",
+      demo: "https://ai-resumebuilder-geminiai.netlify.app/"
     }
   ];
 
@@ -105,20 +105,20 @@ const Portfolio = () => {
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none hidden md:block"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000 motion-reduce:animate-none hidden md:block"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl hidden md:block"></div>
         </div>
 
         {/* Floating Elements */}
-        <div className="absolute top-20 left-10 opacity-20">
-          <div className="w-3 h-3 bg-primary rounded-full animate-bounce"></div>
+        <div className="absolute top-20 left-10 opacity-20 hidden md:block">
+          <div className="w-3 h-3 bg-primary rounded-full animate-bounce motion-reduce:animate-none"></div>
         </div>
-        <div className="absolute top-1/3 right-20 opacity-20">
-          <div className="w-2 h-2 bg-accent rounded-full animate-bounce delay-500"></div>
+        <div className="absolute top-1/3 right-20 opacity-20 hidden md:block">
+          <div className="w-2 h-2 bg-accent rounded-full animate-bounce delay-500 motion-reduce:animate-none"></div>
         </div>
-        <div className="absolute bottom-1/4 left-1/4 opacity-20">
-          <div className="w-4 h-4 bg-primary/50 rounded-full animate-bounce delay-1000"></div>
+        <div className="absolute bottom-1/4 left-1/4 opacity-20 hidden md:block">
+          <div className="w-4 h-4 bg-primary/50 rounded-full animate-bounce delay-1000 motion-reduce:animate-none"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -223,29 +223,31 @@ const Portfolio = () => {
                 {/* Main Image Container */}
                 <div className="relative">
                   {/* Animated Rings */}
-                  <div className="absolute inset-0 animate-spin-slow">
+                  <div className="absolute inset-0 animate-spin-slow motion-reduce:animate-none hidden md:block">
                     <div className="w-full h-full rounded-full border-2 border-dashed border-primary/30"></div>
                   </div>
-                  <div className="absolute inset-4 animate-spin-slow reverse">
+                  <div className="absolute inset-4 animate-spin-slow motion-reduce:animate-none hidden md:block reverse">
                     <div className="w-full h-full rounded-full border-2 border-dotted border-accent/30"></div>
                   </div>
                   
                   {/* Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-accent/20 to-primary/30 rounded-full blur-2xl animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-accent/20 to-primary/30 rounded-full blur-2xl animate-pulse motion-reduce:animate-none hidden md:block"></div>
                   
                   {/* Profile Image */}
                   <div className="relative z-10 w-80 h-80 mx-auto">
                     <img
                       src={profileImage}
                       alt="Kuna Remanth Kumar"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover rounded-full border-4 border-background shadow-2xl hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 </div>
 
                 {/* Floating Tech Cards */}
-                <div className="absolute -top-8 -left-8 opacity-90">
-                  <Card className="bg-gradient-card backdrop-blur-md border-primary/30 p-3 hover:scale-110 transition-transform duration-300 animate-float">
+                <div className="absolute -top-8 -left-8 opacity-90 hidden md:block">
+                  <Card className="bg-gradient-card border-primary/30 p-3 hover:scale-110 transition-transform duration-300 animate-float motion-reduce:animate-none md:backdrop-blur-md">
                     <CardContent className="p-0 flex items-center gap-2">
                       <Code className="w-5 h-5 text-primary" />
                       <span className="text-sm font-medium">React</span>
@@ -253,8 +255,8 @@ const Portfolio = () => {
                   </Card>
                 </div>
 
-                <div className="absolute -top-4 -right-12 opacity-90">
-                  <Card className="bg-gradient-card backdrop-blur-md border-accent/30 p-3 hover:scale-110 transition-transform duration-300 animate-float delay-500">
+                <div className="absolute -top-4 -right-12 opacity-90 hidden md:block">
+                  <Card className="bg-gradient-card border-accent/30 p-3 hover:scale-110 transition-transform duration-300 animate-float delay-500 motion-reduce:animate-none md:backdrop-blur-md">
                     <CardContent className="p-0 flex items-center gap-2">
                       <Database className="w-5 h-5 text-accent" />
                       <span className="text-sm font-medium">MongoDB</span>
@@ -262,8 +264,8 @@ const Portfolio = () => {
                   </Card>
                 </div>
 
-                <div className="absolute -bottom-8 -left-12 opacity-90">
-                  <Card className="bg-gradient-card backdrop-blur-md border-primary/30 p-3 hover:scale-110 transition-transform duration-300 animate-float delay-1000">
+                <div className="absolute -bottom-8 -left-12 opacity-90 hidden md:block">
+                  <Card className="bg-gradient-card border-primary/30 p-3 hover:scale-110 transition-transform duration-300 animate-float delay-1000 motion-reduce:animate-none md:backdrop-blur-md">
                     <CardContent className="p-0 flex items-center gap-2">
                       <Palette className="w-5 h-5 text-primary" />
                       <span className="text-sm font-medium">Design</span>
@@ -271,8 +273,8 @@ const Portfolio = () => {
                   </Card>
                 </div>
 
-                <div className="absolute -bottom-4 -right-8 opacity-90">
-                  <Card className="bg-gradient-card backdrop-blur-md border-accent/30 p-3 hover:scale-110 transition-transform duration-300 animate-float delay-700">
+                <div className="absolute -bottom-4 -right-8 opacity-90 hidden md:block">
+                  <Card className="bg-gradient-card border-accent/30 p-3 hover:scale-110 transition-transform duration-300 animate-float delay-700 motion-reduce:animate-none md:backdrop-blur-md">
                     <CardContent className="p-0 flex items-center gap-2">
                       <Brain className="w-5 h-5 text-accent" />
                       <span className="text-sm font-medium">Node.js</span>
@@ -503,18 +505,24 @@ const Portfolio = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   
                   {/* Overlay with links */}
                   <div className="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
-                    <Button size="sm" variant="outline" className="backdrop-blur-md">
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
+                    <Button asChild size="sm" variant="outline" className="backdrop-blur-md">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </a>
                     </Button>
-                    <Button size="sm" className="backdrop-blur-md">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live
+                    <Button asChild size="sm" className="backdrop-blur-md">
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live
+                      </a>
                     </Button>
                   </div>
                   
@@ -548,13 +556,17 @@ const Portfolio = () => {
                   
                   {/* Action Buttons */}
                   <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                    <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary">
-                      <Github className="w-4 h-4 mr-2" />
-                      Source
+                    <Button asChild variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4 mr-2" />
+                        Source
+                      </a>
                     </Button>
-                    <Button variant="ghost" size="sm" className="hover:bg-accent/10 hover:text-accent">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Preview
+                    <Button asChild variant="ghost" size="sm" className="hover:bg-accent/10 hover:text-accent">
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Preview
+                      </a>
                     </Button>
                   </div>
                 </CardContent>
