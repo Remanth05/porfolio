@@ -6,23 +6,29 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import emailjs from "@emailjs/browser";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  Code, 
-  Palette, 
-  Database, 
-  Brain, 
-  Github, 
-  ExternalLink, 
-  Mail, 
-  Phone, 
+import {
+  Code,
+  Palette,
+  Database,
+  Brain,
+  Github,
+  ExternalLink,
+  Mail,
+  Phone,
   MapPin,
   Download,
   User,
+  Users,
   Briefcase,
   GraduationCap,
   Star,
   Calendar,
-  Award
+  Award,
+  Cloud,
+  Cpu,
+  Network,
+  Server,
+  GitBranch
 } from "lucide-react";
 import { useState } from "react";
 const profileImage = "https://i.postimg.cc/VvtCnY08/personalpic.jpg";
@@ -168,6 +174,21 @@ const Portfolio = () => {
     { name: "Adaptability", level: 80 },
     { name: "UI/UX Design", level: 80 }
   ];
+
+  const skillIcon = (name: string) => {
+    const n = name.toLowerCase();
+    if (n.includes("sql") || n.includes("dbms") || n.includes("database") || n.includes("mongodb")) return <Database className="w-4 h-4" />;
+    if (n.includes("dsa") || n.includes("data structures") || n.includes("problem")) return <Brain className="w-4 h-4" />;
+    if (n.includes("aws") || n.includes("cloud")) return <Cloud className="w-4 h-4" />;
+    if (n.includes("operating") || n.includes("systems") || n.includes("os")) return <Cpu className="w-4 h-4" />;
+    if (n.includes("network")) return <Network className="w-4 h-4" />;
+    if (n.includes("team") || n.includes("communication")) return <Users className="w-4 h-4" />;
+    if (n.includes("adapt")) return <Star className="w-4 h-4" />;
+    if (n.includes("express") || n.includes("node")) return <Server className="w-4 h-4" />;
+    if (n.includes("git")) return <GitBranch className="w-4 h-4" />;
+    if (n.includes("ui") || n.includes("design")) return <Palette className="w-4 h-4" />;
+    return <Code className="w-4 h-4" />;
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -551,19 +572,11 @@ const Portfolio = () => {
               {/* Skills Progress */}
               <div className="space-y-6">
                 <h3 className="text-xl font-semibold mb-4">Technical Skills</h3>
-                <div className="grid gap-4 md:grid-cols-2">
+                <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
                   {skills.map((skill, index) => (
-                    <div key={index} className="group">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="font-medium group-hover:text-primary transition-colors">{skill.name}</span>
-                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-secondary/50 rounded-full h-3 overflow-hidden">
-                        <div 
-                          className="h-3 rounded-full bg-gradient-to-r from-primary via-accent to-primary bg-size-200 animate-gradient transition-all duration-1000 group-hover:shadow-glow"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
+                    <div key={index} className="flex items-center gap-2 rounded-lg border border-border/50 bg-gradient-card px-3 py-2 hover:border-primary/40 hover:shadow-glow transition-colors">
+                      <span className="text-primary">{skillIcon(skill.name)}</span>
+                      <span className="text-sm font-medium">{skill.name}</span>
                     </div>
                   ))}
                 </div>
