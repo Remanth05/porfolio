@@ -1,25 +1,107 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Code, 
-  Palette, 
-  Database, 
-  Brain, 
-  Github, 
-  ExternalLink, 
-  Mail, 
-  Phone, 
+import emailjs from "@emailjs/browser";
+import { useToast } from "@/hooks/use-toast";
+import {
+  Code,
+  Palette,
+  Database,
+  Brain,
+  Github,
+  ExternalLink,
+  Mail,
+  Phone,
   MapPin,
   Download,
   User,
+  Users,
   Briefcase,
   GraduationCap,
   Star,
   Calendar,
-  Award
+  Award,
+  Cloud,
+  Cpu,
+  Network,
+  Server,
+  GitBranch
 } from "lucide-react";
-import profileImage from "../assets/profile-image.jpg";
+import { useState } from "react";
+const profileImage = "https://i.postimg.cc/VvtCnY08/personalpic.jpg";
+
+const EMAILJS_PUBLIC_KEY = "01hIdeLaJOG3c3Vo4";
+const EMAILJS_SERVICE_ID = "service_d0c2exi";
+const EMAILJS_TEMPLATE_ID = "template_eu2yaxm";
+
+const ContactForm = () => {
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [sending, setSending] = useState(false);
+  const { toast } = useToast();
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      setSending(true);
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+          reply_to: form.email,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+      toast({ title: "Message sent", description: "Thanks! I’ll reply soon." });
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      toast({ title: "Failed to send", description: "Please try again later.", variant: "destructive" as any });
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" name="name" value={form.name} onChange={handleChange} placeholder="Your name" required />
+        </div>
+        <div>
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div>
+        <Label htmlFor="subject">Subject</Label>
+        <Input id="subject" name="subject" value={form.subject} onChange={handleChange} placeholder="How can I help?" required />
+      </div>
+      <div>
+        <Label htmlFor="message">Message</Label>
+        <Textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="Write your message..." required className="min-h-[140px]" />
+      </div>
+      <div className="flex justify-end">
+        <Button type="submit" disabled={sending} className="bg-gradient-to-r from-primary to-accent">
+          {sending ? "Sending..." : "Send Message"}
+        </Button>
+      </div>
+    </form>
+  );
+};
 
 const Portfolio = () => {
   const services = [
@@ -40,8 +122,8 @@ const Portfolio = () => {
     },
     {
       icon: <Brain className="w-8 h-8 text-primary" />,
-      title: "Problem Solving",
-      description: "Analyzing complex problems and implementing efficient algorithmic solutions"
+      title: "DSA Enthusiast",
+      description: "Strong foundation in Data Structures & Algorithms; writing optimized, scalable solutions and improving time/space complexity"
     }
   ];
 
@@ -66,7 +148,7 @@ const Portfolio = () => {
       title: "AI Resume Builder",
       description: "AI-powered tool with Clerk authentication and Gemini AI integration",
       tech: ["React", "Clerk", "Gemini AI", "Node.js"],
-      image: "/placeholder.svg",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2F47d5a9427a98458cba491ebd13e8e5fa?format=webp&width=1200",
       github: "https://github.com/Remanth05/AI-Resume-Builder.git",
       demo: "https://ai-resumebuilder-geminiai.netlify.app/"
     }
@@ -75,11 +157,38 @@ const Portfolio = () => {
   const skills = [
     { name: "React.js", level: 90 },
     { name: "Node.js", level: 85 },
+    { name: "Express.js", level: 85 },
     { name: "MongoDB", level: 80 },
     { name: "JavaScript", level: 95 },
-    { name: "Python", level: 75 },
+    { name: "Java", level: 85 },
+    { name: "Python", level: 80 },
+    { name: "Data Structures & Algorithms", level: 85 },
+    { name: "Problem Solving", level: 90 },
+    { name: "Database & SQL", level: 80 },
+    { name: "AWS", level: 60 },
+    { name: "Operating Systems", level: 70 },
+    { name: "DBMS", level: 75 },
+    { name: "Computer Networks", level: 70 },
+    { name: "Communication", level: 85 },
+    { name: "Teamwork", level: 85 },
+    { name: "Adaptability", level: 80 },
     { name: "UI/UX Design", level: 80 }
   ];
+
+  const skillIcon = (name: string) => {
+    const n = name.toLowerCase();
+    if (n.includes("sql") || n.includes("dbms") || n.includes("database") || n.includes("mongodb")) return <Database className="w-4 h-4" />;
+    if (n.includes("dsa") || n.includes("data structures") || n.includes("problem")) return <Brain className="w-4 h-4" />;
+    if (n.includes("aws") || n.includes("cloud")) return <Cloud className="w-4 h-4" />;
+    if (n.includes("operating") || n.includes("systems") || n.includes("os")) return <Cpu className="w-4 h-4" />;
+    if (n.includes("network")) return <Network className="w-4 h-4" />;
+    if (n.includes("team") || n.includes("communication")) return <Users className="w-4 h-4" />;
+    if (n.includes("adapt")) return <Star className="w-4 h-4" />;
+    if (n.includes("express") || n.includes("node")) return <Server className="w-4 h-4" />;
+    if (n.includes("git")) return <GitBranch className="w-4 h-4" />;
+    if (n.includes("ui") || n.includes("design")) return <Palette className="w-4 h-4" />;
+    return <Code className="w-4 h-4" />;
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -156,7 +265,7 @@ const Portfolio = () => {
                     UI/UX Enthusiast
                   </Badge>
                   <Badge className="bg-primary/20 text-primary border-primary/30 px-4 py-2 text-sm">
-                    Problem Solver
+                    DSA Enthusiast
                   </Badge>
                 </div>
                 <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
@@ -188,13 +297,17 @@ const Portfolio = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
-                  <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                  Download Resume
+                <Button asChild size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
+                  <a href="https://cdn.builder.io/o/assets%2F50440a33a47940b994eb2f799fc8ca22%2F6d7fbc135d924dc6a0c4b9a53319f5e8?alt=media&token=cdee984f-b88a-4404-8f7a-069af2919d52&apiKey=50440a33a47940b994eb2f799fc8ca22" download="Kuna_Remanth_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                    Download Resume
+                  </a>
                 </Button>
-                <Button variant="outline" size="lg" className="border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 backdrop-blur-sm">
-                  <ExternalLink className="mr-2 h-5 w-5" />
-                  View Portfolio
+                <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary focus-visible:ring-primary backdrop-blur-sm">
+                  <a href="#projects">
+                    <ExternalLink className="mr-2 h-5 w-5" />
+                    View Portfolio
+                  </a>
                 </Button>
               </div>
 
@@ -202,16 +315,22 @@ const Portfolio = () => {
               <div className="flex items-center gap-6 justify-center lg:justify-start">
                 <span className="text-sm text-muted-foreground">Connect with me:</span>
                 <div className="flex gap-3">
-                  <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
-                    <Github className="h-5 w-5" />
+                  <Button asChild variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
+                    <a href="https://github.com/Remanth05" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                      <Github className="h-5 w-5" />
+                    </a>
                   </Button>
-                  <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
-                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
+                  <Button asChild variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
+                    <a href="https://linkedin.com/in/remanthkumar05" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                    </a>
                   </Button>
-                  <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
-                    <Mail className="h-5 w-5" />
+                  <Button asChild variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary transition-colors">
+                    <a href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                      <Mail className="h-5 w-5" />
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -375,15 +494,6 @@ const Portfolio = () => {
                     />
                     
                     {/* Floating Achievement Cards */}
-                    <div className="absolute -top-6 -right-6">
-                      <Card className="bg-gradient-card backdrop-blur-md border-accent/30 p-3 animate-float">
-                        <CardContent className="p-0 flex items-center gap-2">
-                          <Award className="w-5 h-5 text-accent" />
-                          <span className="text-sm font-medium">94.6%</span>
-                        </CardContent>
-                      </Card>
-                    </div>
-                    
                     <div className="absolute -bottom-4 -left-6">
                       <Card className="bg-gradient-card backdrop-blur-md border-primary/30 p-3 animate-float delay-500">
                         <CardContent className="p-0 flex items-center gap-2">
@@ -453,19 +563,11 @@ const Portfolio = () => {
               {/* Skills Progress */}
               <div className="space-y-6">
                 <h3 className="text-xl font-semibold mb-4">Technical Skills</h3>
-                <div className="grid gap-4">
-                  {skills.slice(0, 4).map((skill, index) => (
-                    <div key={index} className="group">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="font-medium group-hover:text-primary transition-colors">{skill.name}</span>
-                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-secondary/50 rounded-full h-3 overflow-hidden">
-                        <div 
-                          className="h-3 rounded-full bg-gradient-to-r from-primary via-accent to-primary bg-size-200 animate-gradient transition-all duration-1000 group-hover:shadow-glow"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
+                <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+                  {skills.map((skill, index) => (
+                    <div key={index} className="flex items-center gap-2 rounded-lg border border-border/50 bg-gradient-card px-3 py-2 hover:border-primary/40 hover:shadow-glow transition-colors">
+                      <span className="text-primary">{skillIcon(skill.name)}</span>
+                      <span className="text-sm font-medium">{skill.name}</span>
                     </div>
                   ))}
                 </div>
@@ -587,10 +689,10 @@ const Portfolio = () => {
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-card backdrop-blur-md border border-accent/20 mb-6">
+            <a href="#contact-form" className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-card backdrop-blur-md border border-accent/20 mb-6 hover:bg-accent/10 transition-colors">
               <Mail className="w-4 h-4 text-accent mr-2" />
               <span className="text-accent font-medium">Get In Touch</span>
-            </div>
+            </a>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent">
               Got A Project? Let's Talk
             </h2>
@@ -610,11 +712,12 @@ const Portfolio = () => {
                   </div>
                   <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">Email Address</h3>
                   <p className="text-muted-foreground mb-4">Drop me a line anytime</p>
-                  <a 
-                    href="mailto:kunak.ug23.cs@nitp.ac.in" 
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com"
+                    target="_blank" rel="noopener noreferrer"
                     className="text-primary hover:text-accent transition-colors font-medium"
                   >
-                    kunak.ug23.cs@nitp.ac.in
+                    remanthkumar05@gmail.com
                   </a>
                 </CardContent>
               </Card>
@@ -649,6 +752,25 @@ const Portfolio = () => {
               </Card>
             </div>
 
+            {/* Contact Form */}
+            <div className="grid lg:grid-cols-2 gap-8 mb-16">
+              <Card id="contact-form" className="bg-gradient-card backdrop-blur-md border-border/50">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+                  <ContactForm />
+                </CardContent>
+              </Card>
+              <div className="bg-gradient-card backdrop-blur-md rounded-3xl p-8 border border-border/50">
+                <h4 className="text-xl font-semibold mb-4">Prefer email?</h4>
+                <p className="text-muted-foreground mb-4">You can also reach me directly at</p>
+                <a href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com" target="_blank" rel="noopener noreferrer" className="text-primary font-medium">remanthkumar05@gmail.com</a>
+                <div className="mt-6">
+                  <div className="flex items-center gap-3 mb-3"><Phone className="w-5 h-5 text-accent" /><span className="text-foreground">+91 8885473487</span></div>
+                  <div className="flex items-center gap-3"><MapPin className="w-5 h-5 text-primary" /><span className="text-foreground">Patna, Bihar, India</span></div>
+                </div>
+              </div>
+            </div>
+
             {/* CTA Section */}
             <div className="text-center bg-gradient-card backdrop-blur-md rounded-3xl p-12 border border-border/50 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-50"></div>
@@ -660,13 +782,17 @@ const Portfolio = () => {
                   I'm available for freelance projects and full-time opportunities. Let's discuss how we can bring your ideas to life.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
-                    <Mail className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                    Start Conversation
+                  <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
+                    <a href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com" target="_blank" rel="noopener noreferrer">
+                      <Mail className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                      Start Conversation
+                    </a>
                   </Button>
-                  <Button variant="outline" size="lg" className="border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 backdrop-blur-sm">
-                    <Download className="mr-2 h-5 w-5" />
-                    Download CV
+                  <Button asChild variant="outline" size="lg" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:border-accent focus-visible:ring-accent backdrop-blur-sm">
+                    <a href="https://cdn.builder.io/o/assets%2F50440a33a47940b994eb2f799fc8ca22%2F6d7fbc135d924dc6a0c4b9a53319f5e8?alt=media&token=cdee984f-b88a-4404-8f7a-069af2919d52&apiKey=50440a33a47940b994eb2f799fc8ca22" download="Kuna_Remanth_Kumar_CV.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="mr-2 h-5 w-5" />
+                      Download CV
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -698,22 +824,25 @@ const Portfolio = () => {
               
               {/* Social Links */}
               <div className="flex items-center gap-4">
-                <a 
-                  href="https://github.com/Remanth05" 
+                <a
+                  href="https://github.com/Remanth05"
+                  target="_blank" rel="noopener noreferrer"
                   className="w-12 h-12 bg-gradient-card backdrop-blur-md border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all duration-300 hover:scale-110"
                 >
                   <Github className="w-5 h-5" />
                 </a>
-                <a 
-                  href="https://linkedin.com/in/remanthkumar05" 
+                <a
+                  href="https://linkedin.com/in/remanthkumar05"
+                  target="_blank" rel="noopener noreferrer"
                   className="w-12 h-12 bg-gradient-card backdrop-blur-md border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all duration-300 hover:scale-110"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                 </a>
-                <a 
-                  href="mailto:kunak.ug23.cs@nitp.ac.in" 
+                <a
+                  href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com"
+                  target="_blank" rel="noopener noreferrer"
                   className="w-12 h-12 bg-gradient-card backdrop-blur-md border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent/30 transition-all duration-300 hover:scale-110"
                 >
                   <Mail className="w-5 h-5" />
@@ -741,7 +870,7 @@ const Portfolio = () => {
                   <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
                     <Mail className="w-4 h-4 text-primary" />
                   </div>
-                  <span className="text-muted-foreground">kunak.ug23.cs@nitp.ac.in</span>
+                  <a href="https://mail.google.com/mail/?view=cm&to=remanthkumar05@gmail.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent">remanthkumar05@gmail.com</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center">
@@ -768,9 +897,8 @@ const Portfolio = () => {
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-muted-foreground text-sm">Built with</span>
-                <span className="text-primary">❤️</span>
-                <span className="text-muted-foreground text-sm">using React & Tailwind CSS</span>
+                <span className="text-muted-foreground text-sm">Developed by</span>
+                <span className="font-semibold text-foreground">Remanth</span>
               </div>
             </div>
           </div>
