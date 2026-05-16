@@ -306,7 +306,7 @@ const Portfolio = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-blue-500/50 transition-all duration-300 group transform hover:scale-105">
-                  <a href="https://drive.google.com/uc?export=download&id=YOUR_RESUME_FILE_ID" download="Kuna_Remanth_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="https://drive.google.com/uc?export=download&id=1rqkeg5oPyZ3mwJQMTd4BOfsZRoGf6LVw" download="Kuna_Remanth_Kumar_Resume.pdf">
                     <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                     Download Resume
                   </a>
@@ -797,7 +797,7 @@ const Portfolio = () => {
                     </a>
                   </Button>
                   <Button asChild variant="outline" size="lg" className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white hover:border-purple-600 focus-visible:ring-purple-600 backdrop-blur-sm transition-all duration-300 transform hover:scale-105">
-                    <a href="https://drive.google.com/uc?export=download&id=YOUR_RESUME_FILE_ID" download="Kuna_Remanth_Kumar_CV.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href="https://drive.google.com/uc?export=download&id=1rqkeg5oPyZ3mwJQMTd4BOfsZRoGf6LVw" download="Kuna_Remanth_Kumar_CV.pdf">
                       <Download className="mr-2 h-5 w-5" />
                       Download CV
                     </a>
