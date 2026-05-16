@@ -305,8 +305,8 @@ const Portfolio = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button asChild size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
-                  <a href="/Remanth_Resume18.pdf" download="Kuna_Remanth_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-blue-500/50 transition-all duration-300 group transform hover:scale-105">
+                  <a href="https://drive.google.com/uc?export=download&id=YOUR_RESUME_FILE_ID" download="Kuna_Remanth_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                     Download Resume
                   </a>
@@ -367,7 +367,7 @@ const Portfolio = () => {
                       alt="Kuna Remanth Kumar"
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover rounded-full border-4 border-background shadow-2xl hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover rounded-full border-4 border-background shadow-2xl group-hover:shadow-3xl group-hover:scale-110 transition-all duration-700 filter group-hover:brightness-110"
                     />
                   </div>
                 </div>
@@ -498,7 +498,7 @@ const Portfolio = () => {
                     <img
                       src={profileImage}
                       alt="Kuna Remanth Kumar"
-                      className="w-full h-80 object-cover rounded-2xl"
+                      className="w-full h-80 object-cover rounded-2xl shadow-lg group-hover:shadow-2xl transition-shadow duration-500"
                     />
                     
                     {/* Floating Achievement Cards */}
@@ -796,8 +796,8 @@ const Portfolio = () => {
                       Start Conversation
                     </a>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:border-accent focus-visible:ring-accent backdrop-blur-sm">
-                    <a href="/Remanth_Resume18.pdf" download="Kuna_Remanth_Kumar_CV.pdf" target="_blank" rel="noopener noreferrer">
+                  <Button asChild variant="outline" size="lg" className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white hover:border-purple-600 focus-visible:ring-purple-600 backdrop-blur-sm transition-all duration-300 transform hover:scale-105">
+                    <a href="https://drive.google.com/uc?export=download&id=YOUR_RESUME_FILE_ID" download="Kuna_Remanth_Kumar_CV.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="mr-2 h-5 w-5" />
                       Download CV
                     </a>
