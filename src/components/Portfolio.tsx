@@ -31,7 +31,7 @@ import {
   GitBranch
 } from "lucide-react";
 import { useState } from "react";
-const profileImage = "https://i.postimg.cc/VvtCnY08/personalpic.jpg";
+const profileImage = "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2Fb928a2ce36c4498aa287ea27cf2cd314?format=webp&width=800&height=1200";
 
 const EMAILJS_PUBLIC_KEY = "01hIdeLaJOG3c3Vo4";
 const EMAILJS_SERVICE_ID = "service_d0c2exi";
@@ -151,6 +151,14 @@ const Portfolio = () => {
       image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2F47d5a9427a98458cba491ebd13e8e5fa?format=webp&width=1200",
       github: "https://github.com/Remanth05/AI-Resume-Builder.git",
       demo: "https://ai-resumebuilder-geminiai.netlify.app/"
+    },
+    {
+      title: "StreetVendorConnect",
+      description: "Hyperlocal marketplace platform enabling vendors to source raw materials from verified suppliers with real-time tracking",
+      tech: ["React", "Node.js", "MongoDB", "Firebase", "Redux"],
+      image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2Fd3bb18a44bca4b14b554d86147339254?format=webp&width=1200",
+      github: "https://github.com/Remanth05/StreetVendorConnect.git",
+      demo: "https://streetvendor-connect-demo.netlify.app/"
     }
   ];
 
@@ -298,7 +306,7 @@ const Portfolio = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button asChild size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
-                  <a href="https://cdn.builder.io/o/assets%2F50440a33a47940b994eb2f799fc8ca22%2F6d7fbc135d924dc6a0c4b9a53319f5e8?alt=media&token=cdee984f-b88a-4404-8f7a-069af2919d52&apiKey=50440a33a47940b994eb2f799fc8ca22" download="Kuna_Remanth_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="/Remanth_Resume18.pdf" download="Kuna_Remanth_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                     Download Resume
                   </a>
@@ -789,7 +797,7 @@ const Portfolio = () => {
                     </a>
                   </Button>
                   <Button asChild variant="outline" size="lg" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:border-accent focus-visible:ring-accent backdrop-blur-sm">
-                    <a href="https://cdn.builder.io/o/assets%2F50440a33a47940b994eb2f799fc8ca22%2F6d7fbc135d924dc6a0c4b9a53319f5e8?alt=media&token=cdee984f-b88a-4404-8f7a-069af2919d52&apiKey=50440a33a47940b994eb2f799fc8ca22" download="Kuna_Remanth_Kumar_CV.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href="/Remanth_Resume18.pdf" download="Kuna_Remanth_Kumar_CV.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="mr-2 h-5 w-5" />
                       Download CV
                     </a>
