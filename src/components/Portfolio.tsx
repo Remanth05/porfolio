@@ -106,9 +106,9 @@ const ContactForm = () => {
 const Portfolio = () => {
   const services = [
     {
-      icon: <Palette className="w-8 h-8 text-primary" />,
-      title: "UI/UX Design",
-      description: "Creating intuitive and engaging user interfaces with modern design principles"
+      icon: <Brain className="w-8 h-8 text-primary" />,
+      title: "ML Enthusiast",
+      description: "Passionate about machine learning and AI integration to solve real-world problems"
     },
     {
       icon: <Code className="w-8 h-8 text-primary" />,
@@ -153,12 +153,12 @@ const Portfolio = () => {
       demo: "https://ai-resumebuilder-geminiai.netlify.app/"
     },
     {
-      title: "StreetVendorConnect",
-      description: "Hyperlocal marketplace platform enabling vendors to source raw materials from verified suppliers with real-time tracking",
-      tech: ["React", "Node.js", "MongoDB", "Firebase", "Redux"],
-      image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2Fd3bb18a44bca4b14b554d86147339254?format=webp&width=1200",
-      github: "https://github.com/Remanth05/StreetVendorConnect.git",
-      demo: "https://streetvendor-connect-demo.netlify.app/"
+      title: "Hospital Management",
+      description: "Developed a scalable Hospital Management System using the MERN stack featuring appointment booking, patient record management, doctor scheduling, billing, and secure authentication. Integrated an AI chatbot powered by Gemini API to improve customer engagement and provide instant patient assistance.",
+      tech: ["React", "Node.js", "MongoDB", "Express", "Gemini AI"],
+      image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2Fc07b957c4f42452d985d921d23437321?format=webp&width=800&height=1200",
+      github: "https://github.com/Remanth05/healthhub.git",
+      demo: "https://healthhub-demo.netlify.app/"
     }
   ];
 
@@ -177,10 +177,9 @@ const Portfolio = () => {
     { name: "Operating Systems", level: 70 },
     { name: "DBMS", level: 75 },
     { name: "Computer Networks", level: 70 },
-    { name: "Communication", level: 85 },
     { name: "Teamwork", level: 85 },
     { name: "Adaptability", level: 80 },
-    { name: "AI/ML Enthusiast", level: 80 }
+    { name: "ML Enthusiast", level: 80 }
   ];
 
   const skillIcon = (name: string) => {
