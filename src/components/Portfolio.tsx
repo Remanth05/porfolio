@@ -270,7 +270,7 @@ const Portfolio = () => {
                     Full Stack Developer
                   </Badge>
                   <Badge className="bg-accent/20 text-accent border-accent/30 px-4 py-2 text-sm">
-                    UI/UX Enthusiast
+                    ML Enthusiast
                   </Badge>
                   <Badge className="bg-primary/20 text-primary border-primary/30 px-4 py-2 text-sm">
                     DSA Enthusiast
