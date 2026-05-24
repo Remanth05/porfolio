@@ -31,7 +31,7 @@ import {
   GitBranch
 } from "lucide-react";
 import { useState } from "react";
-const profileImage = "https://i.postimg.cc/VvtCnY08/personalpic.jpg";
+const profileImage = "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2Fb928a2ce36c4498aa287ea27cf2cd314?format=webp&width=800&height=1200";
 
 const EMAILJS_PUBLIC_KEY = "01hIdeLaJOG3c3Vo4";
 const EMAILJS_SERVICE_ID = "service_d0c2exi";
@@ -106,9 +106,9 @@ const ContactForm = () => {
 const Portfolio = () => {
   const services = [
     {
-      icon: <Palette className="w-8 h-8 text-primary" />,
-      title: "UI/UX Design",
-      description: "Creating intuitive and engaging user interfaces with modern design principles"
+      icon: <Brain className="w-8 h-8 text-primary" />,
+      title: "ML Enthusiast",
+      description: "Passionate about machine learning and AI integration to solve real-world problems"
     },
     {
       icon: <Code className="w-8 h-8 text-primary" />,
@@ -151,6 +151,14 @@ const Portfolio = () => {
       image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2F47d5a9427a98458cba491ebd13e8e5fa?format=webp&width=1200",
       github: "https://github.com/Remanth05/AI-Resume-Builder.git",
       demo: "https://ai-resumebuilder-geminiai.netlify.app/"
+    },
+    {
+      title: "Hospital Management",
+      description: "Developed a scalable Hospital Management System using the MERN stack featuring appointment booking, patient record management, doctor scheduling, billing, and secure authentication. Integrated an AI chatbot powered by Gemini API to improve customer engagement and provide instant patient assistance.",
+      tech: ["React", "Node.js", "MongoDB", "Express", "Gemini AI"],
+      image: "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2Fc07b957c4f42452d985d921d23437321?format=webp&width=800&height=1200",
+      github: "https://github.com/Remanth05/healthhub.git",
+      demo: "https://healthhub-demo.netlify.app/"
     }
   ];
 
@@ -169,10 +177,9 @@ const Portfolio = () => {
     { name: "Operating Systems", level: 70 },
     { name: "DBMS", level: 75 },
     { name: "Computer Networks", level: 70 },
-    { name: "Communication", level: 85 },
     { name: "Teamwork", level: 85 },
     { name: "Adaptability", level: 80 },
-    { name: "UI/UX Design", level: 80 }
+    { name: "ML Enthusiast", level: 80 }
   ];
 
   const skillIcon = (name: string) => {
@@ -187,6 +194,7 @@ const Portfolio = () => {
     if (n.includes("express") || n.includes("node")) return <Server className="w-4 h-4" />;
     if (n.includes("git")) return <GitBranch className="w-4 h-4" />;
     if (n.includes("ui") || n.includes("design")) return <Palette className="w-4 h-4" />;
+    if (n.includes("ai") || n.includes("ml") || n.includes("machine")) return <Brain className="w-4 h-4" />;
     return <Code className="w-4 h-4" />;
   };
 
@@ -262,7 +270,7 @@ const Portfolio = () => {
                     Full Stack Developer
                   </Badge>
                   <Badge className="bg-accent/20 text-accent border-accent/30 px-4 py-2 text-sm">
-                    UI/UX Enthusiast
+                    ML Enthusiast
                   </Badge>
                   <Badge className="bg-primary/20 text-primary border-primary/30 px-4 py-2 text-sm">
                     DSA Enthusiast
@@ -297,8 +305,8 @@ const Portfolio = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button asChild size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-glow hover:shadow-primary/50 transition-all duration-300 group">
-                  <a href="https://cdn.builder.io/o/assets%2F50440a33a47940b994eb2f799fc8ca22%2F6d7fbc135d924dc6a0c4b9a53319f5e8?alt=media&token=cdee984f-b88a-4404-8f7a-069af2919d52&apiKey=50440a33a47940b994eb2f799fc8ca22" download="Kuna_Remanth_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-blue-500/50 transition-all duration-300 group transform hover:scale-105">
+                  <a href="https://drive.google.com/uc?export=download&id=1rqkeg5oPyZ3mwJQMTd4BOfsZRoGf6LVw" download="Kuna_Remanth_Kumar_Resume.pdf">
                     <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                     Download Resume
                   </a>
@@ -359,7 +367,7 @@ const Portfolio = () => {
                       alt="Kuna Remanth Kumar"
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover rounded-full border-4 border-background shadow-2xl hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover rounded-full border-4 border-background shadow-2xl group-hover:shadow-3xl group-hover:scale-110 transition-all duration-700 filter group-hover:brightness-110"
                     />
                   </div>
                 </div>
@@ -490,7 +498,7 @@ const Portfolio = () => {
                     <img
                       src={profileImage}
                       alt="Kuna Remanth Kumar"
-                      className="w-full h-80 object-cover rounded-2xl"
+                      className="w-full h-80 object-cover rounded-2xl shadow-lg group-hover:shadow-2xl transition-shadow duration-500"
                     />
                     
                     {/* Floating Achievement Cards */}
@@ -788,8 +796,8 @@ const Portfolio = () => {
                       Start Conversation
                     </a>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover:border-accent focus-visible:ring-accent backdrop-blur-sm">
-                    <a href="https://cdn.builder.io/o/assets%2F50440a33a47940b994eb2f799fc8ca22%2F6d7fbc135d924dc6a0c4b9a53319f5e8?alt=media&token=cdee984f-b88a-4404-8f7a-069af2919d52&apiKey=50440a33a47940b994eb2f799fc8ca22" download="Kuna_Remanth_Kumar_CV.pdf" target="_blank" rel="noopener noreferrer">
+                  <Button asChild variant="outline" size="lg" className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white hover:border-purple-600 focus-visible:ring-purple-600 backdrop-blur-sm transition-all duration-300 transform hover:scale-105">
+                    <a href="https://drive.google.com/uc?export=download&id=1rqkeg5oPyZ3mwJQMTd4BOfsZRoGf6LVw" download="Kuna_Remanth_Kumar_CV.pdf">
                       <Download className="mr-2 h-5 w-5" />
                       Download CV
                     </a>
