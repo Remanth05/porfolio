@@ -31,7 +31,7 @@ import {
   GitBranch
 } from "lucide-react";
 import { useState } from "react";
-const profileImage = "https://kommodo.ai/i/SXB3KDU66xyEJxEOHeQT";
+const profileImage = "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2Fb928a2ce36c4498aa287ea27cf2cd314?format=webp&width=800&height=1200";
 
 const EMAILJS_PUBLIC_KEY = "01hIdeLaJOG3c3Vo4";
 const EMAILJS_SERVICE_ID = "service_d0c2exi";
