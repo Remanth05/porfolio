@@ -31,7 +31,7 @@ import {
   GitBranch
 } from "lucide-react";
 import { useState } from "react";
-const profileImage = "https://cdn.builder.io/api/v1/image/assets%2F50440a33a47940b994eb2f799fc8ca22%2Fb928a2ce36c4498aa287ea27cf2cd314?format=webp&width=800&height=1200";
+const profileImage = "https://kommodo.ai/i/SXB3KDU66xyEJxEOHeQT";
 
 const EMAILJS_PUBLIC_KEY = "01hIdeLaJOG3c3Vo4";
 const EMAILJS_SERVICE_ID = "service_d0c2exi";
@@ -180,7 +180,7 @@ const Portfolio = () => {
     { name: "Communication", level: 85 },
     { name: "Teamwork", level: 85 },
     { name: "Adaptability", level: 80 },
-    { name: "UI/UX Design", level: 80 }
+    { name: "AI/ML Enthusiast", level: 80 }
   ];
 
   const skillIcon = (name: string) => {
@@ -195,6 +195,7 @@ const Portfolio = () => {
     if (n.includes("express") || n.includes("node")) return <Server className="w-4 h-4" />;
     if (n.includes("git")) return <GitBranch className="w-4 h-4" />;
     if (n.includes("ui") || n.includes("design")) return <Palette className="w-4 h-4" />;
+    if (n.includes("ai") || n.includes("ml") || n.includes("machine")) return <Brain className="w-4 h-4" />;
     return <Code className="w-4 h-4" />;
   };
 
